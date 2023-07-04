@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <div class="p-8 pb-0">
     <input
       type="text"
       v-model="keyword"
@@ -15,7 +15,7 @@
       :key="meal.idMeal"
       class="bg-white shadow rounded-xl"
     >
-      <router-link to="/">
+      <router-link :to="{ name: 'mealDetails', id: meal.idMeal }">
         <img
           :src="meal.strMealThumb"
           :alt="meal.strMeal"
@@ -43,13 +43,22 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import store from "../store";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
 const keyword = ref("");
 const meals = computed(() => store.state.searchedMeals);
 
 function searchMeals() {
   store.dispatch("searchMeals", keyword.value);
 }
+
+onMounted(() => {
+  keyword.value = route.params.name;
+  if (keyword.value) {
+    searchMeals();
+  }
+});
 </script>
