@@ -19,8 +19,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from "vue";
-import store from "../store";
+import { onMounted } from "vue";
 import { ref } from "vue";
 import axiosClient from "../AxiosClient";
 
