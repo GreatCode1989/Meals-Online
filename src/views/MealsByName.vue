@@ -15,7 +15,7 @@
       :key="meal.idMeal"
       class="bg-white shadow rounded-xl"
     >
-      <router-link :to="{ name: 'mealDetails', id: meal.idMeal }">
+      <router-link :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
         <img
           :src="meal.strMealThumb"
           :alt="meal.strMeal"
@@ -30,12 +30,7 @@
           est corrupti rerum mollitia quam. Dolorem!
         </p>
         <div class="flex items-center justify-between">
-          <a
-            :href="meal.strYoutube"
-            target="_blank"
-            class="px-3 py-2 rounded-xl bg-red-700 text-white hover:bg-red-500 hover:text-white transition-colors"
-            >YouTube</a
-          >
+          <YouTubeButton :href="meal.strYoutube">YouTube </YouTubeButton>
         </div>
       </div>
     </div>
@@ -46,6 +41,7 @@
 import { ref, computed, onMounted } from "vue";
 import store from "../store";
 import { useRoute } from "vue-router";
+import YouTubeButton from "../components/YouTubeButton.vue";
 
 const route = useRoute();
 const keyword = ref("");
