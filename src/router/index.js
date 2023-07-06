@@ -21,7 +21,7 @@ const routes = [
                 path: '/by-name/:name?',
                 name: 'byName',
                 component: MealsByName
-            },
+              },
             {
                 path: '/by-letter/:letter?',
                 name: 'byLetter',
