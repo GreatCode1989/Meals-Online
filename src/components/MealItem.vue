@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white shadow rounded-xl">
+  <div class="bg-white shadow rounded-xl m-3">
     <router-link :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
       <img
         :src="meal.strMealThumb"
